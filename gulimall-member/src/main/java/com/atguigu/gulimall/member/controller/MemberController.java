@@ -3,6 +3,7 @@ package com.atguigu.gulimall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.atguigu.gulimall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,23 @@ import com.atguigu.common.utils.R;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired //自动注入
+    private CouponFeignService couponFeignService;
+
+    //测试 gulimall-member 对 gulimall-coupon 的远程调用
+    @RequestMapping("/coupons") //这里声明了本微服务的一个页面 127.0.0.1:8000/member/member/coupons
+    public R test(){
+        //假设有一个会员 ， 实则应该是member数据库中得到的会员
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setNickname("法克");
+
+        //从coupon微服务中得到该会员的全部优惠券信息
+        R membercoupons = couponFeignService.membercoupons();
+
+        return R.ok().put("member",memberEntity).put("coupons",membercoupons.get("coupons"));
+
+    }
 
     /**
      * 列表
