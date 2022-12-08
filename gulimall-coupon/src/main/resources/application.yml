@@ -1,3 +1,4 @@
+##这里的配置都被放到配置中心去了
 #spring:
 #  datasource:
 #    username: root
