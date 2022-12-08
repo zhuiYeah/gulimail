@@ -9,6 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  *  1.开启服务的注册发现
  *      配置nacos的注册中心地址
+ *              application.properties
  *
  */
 
