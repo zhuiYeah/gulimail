@@ -23,6 +23,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *          2、配置mybatis-plus
  *              2.1、使用@MapperScan
  *              2.2、告诉mybatis-plus ,sql映射文件位置
+ *
+ * 2。使用mybatis的逻辑删除，，来"删除"数据库中的表项
+ *     2。1配置全局的逻辑删除规则 application.yml
+ *     2。2配置逻辑删除的组件Bean
+ *     2。3给实体类逻辑删除字段Bean加上注解 @TableLogic
+ *
  * ***/
 
 @EnableDiscoveryClient

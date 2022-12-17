@@ -49,6 +49,20 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     /**
+     * 确定catid的物品未被引用，然后删除
+     */
+    @Override
+    public void removeMenuByids(List<Long> asList) {
+        //TODO 1.检查当前删除的菜单是否被其他地方引用，
+
+        //逻辑删除 --
+
+        //
+        // 直接删除
+        baseMapper.deleteBatchIds(asList);
+    }
+
+    /**
      * 查找所有菜单的子菜单，根据数据库中的结构将会形成三级树形树形结构
      **/
 //    private List<CategoryEntity> getChildren1(CategoryEntity father, List<CategoryEntity> entities) {
